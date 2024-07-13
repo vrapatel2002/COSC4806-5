@@ -40,9 +40,16 @@ if (!isset($_SESSION['auth'])) {
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+
+        <?php if ($_SESSION['username'] === 'Admin'): ?>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link" href="/reports">Reports</a>
         </li>
+        <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Report</a>
+          </li>
+        <?php endif; ?>
       </ul>
     </div>
   </div>

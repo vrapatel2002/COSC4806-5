@@ -1,4 +1,4 @@
- <?php require_once 'app/views/templates/header.php'?>
+ <?php require_once 'app/views/templates/header_reminder.php'?>
 
 <main role="main" class="container">
     <div class="page-header" id="banner">

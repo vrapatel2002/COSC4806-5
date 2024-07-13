@@ -87,6 +87,13 @@ class User {
     $statement->execute();
       
   }
-
+  
+  public function getTotalLoginsByUsername() {
+    $db = db_connect();
+    $statement = $db->prepare("SELECT username, COUNT(*) as total_logins FROM login_attempts WHERE attempt_status = 'good' GROUP BY username");
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+  }
   
 }

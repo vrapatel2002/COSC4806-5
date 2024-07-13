@@ -38,5 +38,16 @@ class Reminder {
     $statement->bindParam(':id', $id);
     $statement->execute();
   }
+
+  public function getRemindersByUser() {
+      $db = db_connect();
+      $statement = $db->prepare("SELECT u.username, COUNT(r.id) as total_reminders
+                                 FROM users u
+                                 LEFT JOIN reminders r ON u.id = r.user_id
+                                 GROUP BY u.id, u.username");
+      $statement->execute();
+      $remindersByUser = $statement->fetchAll(PDO::FETCH_ASSOC);
+      return $remindersByUser;
+  }
   
 }
